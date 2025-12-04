@@ -89,5 +89,5 @@
 
 	<!-- _________________________________ Custom _______________________________ -->
 
-	<!-- blah blah blah -->
+	<prebuild haxe="source/compiling/Prebuild.hx"/>
 </project>
