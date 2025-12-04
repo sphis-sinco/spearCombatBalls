@@ -25,18 +25,29 @@ class VersionManager
 	{
 		var full_version = VERSION;
 
-		#if INCLUDE_BUILD full_version += '.' + BUILD; #end
+		if (INCLUDE_BUILD)
+			full_version += '.' + BUILD;
 
 		return full_version;
 	}
 
 	public static function onStart()
 	{
-        #if sys
-        #if debug
-        File.saveContent('assets/build.txt', '' + BUILD + 1);
-        #end
-        #end
-        trace('Build Number: ' + BUILD);
+		#if sys
+		#if debug
+		File.saveContent('assets/build.txt', '' + BUILD + 1);
+		#end
+		#end
+		trace('Build Number: ' + BUILD);
+		trace('Version: ' + VERSION);
+		trace('Full Version: ' + VERSION_FULL);
+	}
+
+	public static var INCLUDE_BUILD(get, never):Bool;
+
+	static function get_INCLUDE_BUILD():Bool
+	{
+        // TODO: Make a setting
+		return true;
 	}
 }
