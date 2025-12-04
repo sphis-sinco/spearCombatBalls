@@ -15,4 +15,15 @@ class VersionManager
 	{
 		return Assets.getText('version.txt');
 	}
+
+	public var VERSION_FULL(get, never):String;
+
+	function get_VERSION_FULL():String
+	{
+		var full_version = VERSION;
+
+		#if INCLUDE_BUILD full_version += '.' + BUILD; #end
+
+		return full_version;
+	}
 }
