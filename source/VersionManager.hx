@@ -1,29 +1,42 @@
+#if sys
+import sys.io.File;
+#end
 import lime.utils.Assets;
 
 class VersionManager
 {
-	public var BUILD(get, never):Int;
+	public static var BUILD(get, never):Int;
 
-	function get_BUILD():Int
+	static function get_BUILD():Int
 	{
-		return Std.parseInt(Assets.getText('build.txt'));
+		return Std.parseInt(Assets.getText('assets/build.txt'));
 	}
 
-	public var VERSION(get, never):String;
+	public static var VERSION(get, never):String;
 
-	function get_VERSION():String
+	static function get_VERSION():String
 	{
-		return Assets.getText('version.txt');
+		return Assets.getText('assets/version.txt');
 	}
 
-	public var VERSION_FULL(get, never):String;
+	public static var VERSION_FULL(get, never):String;
 
-	function get_VERSION_FULL():String
+	static function get_VERSION_FULL():String
 	{
 		var full_version = VERSION;
 
 		#if INCLUDE_BUILD full_version += '.' + BUILD; #end
 
 		return full_version;
+	}
+
+	public static function onStart()
+	{
+        #if sys
+        #if debug
+        File.saveContent('assets/build.txt', '' + BUILD + 1);
+        #end
+        #end
+        trace('Build Number: ' + BUILD);
 	}
 }
