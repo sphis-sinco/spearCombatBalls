@@ -28,11 +28,14 @@ class VersionManager
 	{
 		var full_version = VERSION;
 
+		full_version += '-' + VERSION_RELEASE_TYPE_TEXT;
 		if (INCLUDE_BUILD)
-			full_version += '.' + BUILD;
+			full_version += BUILD;
 
 		return full_version;
 	}
+
+	public static var VERSION_RELEASE_TYPE_TEXT:VersionReleaseTypeText = DEBUG;
 
 	public static function onStart()
 	{
@@ -59,7 +62,19 @@ class VersionManager
 
 	static function get_INCLUDE_BUILD():Bool
 	{
-        // TODO: Make a setting
+		// TODO: Make a setting
 		return true;
 	}
+}
+
+enum abstract VersionReleaseTypeText(String)
+{
+	var RELEASE = 'r';
+
+	var RELEASE_CANDIDATE = 'rc';
+	var PRE_RELEASE = 'pr';
+
+	var SNAPSHOT = 's';
+
+	var DEBUG = 'd';
 }
