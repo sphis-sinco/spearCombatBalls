@@ -35,8 +35,6 @@
 	<source path="source" />
 	<assets path="assets" />
 
-	<prebuild haxe="compiling/Prebuild.hx"/>
-
 	<!-- _______________________________ Libraries ______________________________ -->
 
 	<haxelib name="flixel" />
