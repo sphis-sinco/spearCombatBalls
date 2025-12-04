@@ -34,7 +34,6 @@
 
 	<source path="source" />
 	<assets path="assets" />
-	<assets path="assets/embed" rename="assets" embed="true"/>
 
 	<!-- _______________________________ Libraries ______________________________ -->
 

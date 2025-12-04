@@ -1,7 +1,10 @@
 #if sys
 import sys.io.File;
+import sys.FileSystem;
 #end
 import lime.utils.Assets;
+
+using StringTools;
 
 class VersionManager
 {
@@ -33,11 +36,20 @@ class VersionManager
 
 	public static function onStart()
 	{
-		#if sys
-		#if debug
-		File.saveContent(#if mac '../../..' #else '' #end +  '../../../../assets/build.txt', '' + BUILD + 1);
+		#if (sys && debug)
+		var sysPath = Sys.programPath().substring(0, Sys.programPath().indexOf('\\export')).replace('\\', '/');
+		sysPath += '/assets/build.txt';
+
+		File.saveContent(sysPath, Std.string(BUILD + 1));
+
+		if (!FileSystem.exists('prev-build')
+			|| (FileSystem.exists('prev-build') && (File.getContent('prev-build') != File.getContent('assets/build.txt'))))
+		{
+			File.saveContent('prev-build', Std.string(BUILD));
+			File.saveContent('assets/build.txt', Std.string(BUILD + 1));
+		}
 		#end
-		#end
+
 		trace('Build Number: ' + BUILD);
 		trace('Version: ' + VERSION);
 		trace('Full Version: ' + VERSION_FULL);
