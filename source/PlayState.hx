@@ -1,5 +1,6 @@
 package;
 
+import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.util.FlxSpriteUtil;
 import flixel.graphics.FlxGraphic;
@@ -20,6 +21,8 @@ class PlayState extends FlxState
 		add(player);
 
 		player.screenCenter();
+
+		add(new FlxText(2, 2, 0, VersionManager.VERSION_FULL, 8));
 	}
 
 	override public function update(elapsed:Float)
