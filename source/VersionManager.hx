@@ -8,4 +8,11 @@ class VersionManager
 	{
 		return Std.parseInt(Assets.getText('build.txt'));
 	}
+
+	public var VERSION(get, never):String;
+
+	function get_VERSION():String
+	{
+		return Assets.getText('version.txt');
+	}
 }
