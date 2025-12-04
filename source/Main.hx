@@ -9,6 +9,10 @@ class Main extends Sprite
 	{
 		super();
 
+		trace('Build Number: ' + VersionManager.BUILD);
+		trace('Version: ' + VersionManager.VERSION);
+		trace('Full Version: ' + VersionManager.VERSION_FULL);
+
 		addChild(new FlxGame(0, 0, PlayState));
 	}
 }

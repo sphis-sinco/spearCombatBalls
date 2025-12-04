@@ -35,8 +35,6 @@
 	<source path="source" />
 	<assets path="assets" />
 
-	<prebuild haxe="compiling/Prebuild.hx"/>
-
 	<!-- _______________________________ Libraries ______________________________ -->
 
 	<haxelib name="flixel" />
@@ -91,5 +89,5 @@
 
 	<!-- _________________________________ Custom _______________________________ -->
 
-	<!--Place custom nodes like icons here-->
+	<prebuild haxe="source/compiling/Prebuild.hx"/>
 </project>

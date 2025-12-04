@@ -24,7 +24,7 @@ class VersionManager
 
 	public static var VERSION_FULL(get, never):String;
 
-	static function get_VERSION_FULL():String
+	public static function get_VERSION_FULL():String
 	{
 		var full_version = VERSION;
 
@@ -36,27 +36,6 @@ class VersionManager
 	}
 
 	public static var VERSION_RELEASE_TYPE_TEXT:VersionReleaseTypeText = DEBUG;
-
-	public static function onStart()
-	{
-		#if (sys && debug)
-		var sysPath = Sys.programPath().substring(0, Sys.programPath().indexOf('\\export')).replace('\\', '/');
-		sysPath += '/assets/build.txt';
-
-		File.saveContent(sysPath, Std.string(BUILD + 1));
-
-		if (!FileSystem.exists('prev-build')
-			|| (FileSystem.exists('prev-build') && (File.getContent('prev-build') != File.getContent('assets/build.txt'))))
-		{
-			File.saveContent('prev-build', Std.string(BUILD));
-			File.saveContent('assets/build.txt', Std.string(BUILD + 1));
-		}
-		#end
-
-		trace('Build Number: ' + BUILD);
-		trace('Version: ' + VERSION);
-		trace('Full Version: ' + VERSION_FULL);
-	}
 
 	public static var INCLUDE_BUILD(get, never):Bool;
 
