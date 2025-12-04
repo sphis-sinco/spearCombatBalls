@@ -35,7 +35,7 @@ class VersionManager
 	{
 		#if sys
 		#if debug
-		File.saveContent('assets/build.txt', '' + BUILD + 1);
+		File.saveContent(#if mac '../../..' #else '' #end +  '../../../../assets/build.txt', '' + BUILD + 1);
 		#end
 		#end
 		trace('Build Number: ' + BUILD);
